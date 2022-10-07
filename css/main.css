@@ -61,7 +61,10 @@ ul, li {
 	list-style-type: none;
 }
 
-
+.modal-backdrop.show {
+  /* opacity: .5; */
+  display: none;
+}
 /*---------------------------------------------*/
 input {
 	outline: none;

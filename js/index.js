@@ -72,12 +72,13 @@ document.querySelector("#btnTinhTien").onclick = function () {
   xuatTien.innerHTML = taxi.price;
 
   
-  renderInvoice(type, soKM, thoiGianCho, price, taxi);
+  renderInvoice(taxi);
 };
 
-document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soKM, thoiGianCho, price, taxi) {
+function renderInvoice(taxi) {
   var contentHTML = "";
   // var priceType = taxi.getPriceEachType();
+  var price = taxi.price;
   var moneyWait = taxi.moneyWait;
   var type = taxi.typeTaxi();
   var soKM = taxi.soKM;
@@ -117,7 +118,7 @@ document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soK
                       <td>${type}</td>
                       <td>${soKM - 1} km</td>
                       <td>${km1_20X}</td>
-                      <td>${km1_20X}</td>
+                      <td>${km1_20X*(soKM - 1)}</td>
                   </tr>
                   <tr>
                       <td>Thời gian chờ</td>
@@ -144,13 +145,13 @@ document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soK
                       <td>${type}</td>
                       <td>19 km</td>
                       <td>${km1_20X}</td>
-                      <td>${km1_20X}</td>
+                      <td>${km1_20X*19}</td>
                   </tr>
                   <tr>
                       <td>${type}</td>
                       <td>${soKM - 20} km</td>
                       <td>${km21X}</td>
-                      <td>${km21X}</td>
+                      <td>${km21X*(soKM - 20)}</td>
                   </tr>
                   <tr>
                       <td>Thời gian chờ</td>
@@ -202,7 +203,7 @@ document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soK
                       <td>${type}</td>
                       <td>${soKM - 1} km</td>
                       <td>${km1_20SUV}</td>
-                      <td>${km1_20SUV}</td>
+                      <td>${km1_20SUV*(soKM - 1)}</td>
                   </tr>
                   <tr>
                       <td>Thời gian chờ</td>
@@ -229,13 +230,13 @@ document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soK
                       <td>${type}</td>
                       <td>19 km</td>
                       <td>${km1_20SUV}</td>
-                      <td>${km1_20SUV}</td>
+                      <td>${km1_20SUV*19}</td>
                   </tr>
                   <tr>
                       <td>${type}</td>
                       <td>${soKM - 20} km</td>
                       <td>${km21SUV}</td>
-                      <td>${km21SUV}</td>
+                      <td>${km21SUV*(soKM - 20)}</td>
                   </tr>
                   <tr>
                       <td>Thời gian chờ</td>
@@ -253,7 +254,7 @@ document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soK
       }
     }break;
 
-    case "uberB" :{
+    case "uberBlack" :{
       if (soKM <= 1) {
         contentHTML += `
                         <tr>
@@ -287,7 +288,7 @@ document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soK
                       <td>${type}</td>
                       <td>${soKM - 1} km</td>
                       <td>${km1_20B}</td>
-                      <td>${km1_20B}</td>
+                      <td>${km1_20B*(soKM - 1)}</td>
                   </tr>
                   <tr>
                       <td>Thời gian chờ</td>
@@ -314,13 +315,13 @@ document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soK
                       <td>${type}</td>
                       <td>19 km</td>
                       <td>${km1_20B}</td>
-                      <td>${km1_20B}</td>
+                      <td>${km1_20B*19}</td>
                   </tr>
                   <tr>
                       <td>${type}</td>
                       <td>${soKM - 20} km</td>
                       <td>${km21B}</td>
-                      <td>${km21B}</td>
+                      <td>${km21B*(soKM - 20)}</td>
                   </tr>
                   <tr>
                       <td>Thời gian chờ</td>
@@ -339,5 +340,5 @@ document.querySelector("#btnInHoaDon").onlick = function renderInvoice(type, soK
     }break;
   }
   console.log(contentHTML);
-  document.querySelector("#tbodyInvoice").innerHTML = contentHTML;
+  document.getElementById("tbodyInvoice").innerHTML = contentHTML;
 }
